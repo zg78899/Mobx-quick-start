@@ -1,4 +1,4 @@
-##@observable (by mobx)
+## @observable (by mobx)
 
 oberservable 사용법 - 2가지 방식
 
@@ -39,7 +39,7 @@ class AgeStore{
 const ageStore = new AgeStore();
 ~~~
 
-##Observer (by mobx-react)
+## Observer (by mobx-react)
 
 -컴포넌트에 붙여사용한다.
 
