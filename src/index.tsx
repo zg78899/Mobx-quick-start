@@ -4,11 +4,28 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import {observable} from 'mobx';
-import { Provider} from 'mobx-react';
+import {observable,useStrict, action, computed  } from 'mobx';
+import { Provider,} from 'mobx-react';
+import autobind from 'autobind-decorator';
+
+useStrict(true);
 
 export class Store {
-  @observable test: number[] =[];
+  @observable private _test: number[] =[];
+  // action이라고 달아줌
+  @autobind
+  @action
+  add(){
+      this._test.push(Math.round(Math.random() * 100 ));
+  }
+  @computed
+  get test(){
+    if(this._test.length >5){
+      return this._test;
+    }else{
+      return [];
+    }
+  }
 }
 
 
