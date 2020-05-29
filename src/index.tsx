@@ -4,10 +4,21 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import {observable} from 'mobx';
+import { Provider} from 'mobx-react';
+
+export class Store {
+  @observable test: number[] =[];
+}
+
+
+const store = new Store();
+//test가 변하면 반영
+//객체에 observable을 달아줌
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 

@@ -35,5 +35,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autobind-decorator": "^2.4.0",
+    "mobx": "^5.15.4",
+    "mobx-react": "^6.2.2"
   }
 }
