@@ -183,3 +183,65 @@ ref.child('todos').on('value',action((snapshot:firebase.database,DataSnapshot)=>
 }
 ~~~
 
+
+
+## @inject와 Provider
+
+### Provider
+
+- Redux을 사용할 때 ,Provider와 동일한 개념으로 컨테이너 라는 개념으로 사용해도 무관하다.
+
+- Provider에 props로 넣고 ,@inject로 꺼내서 쓴다고 생각하면 된다.
+
+  -상당히 명시적이고 ,편리한다
+
+  -컨테이너를 쓰지 않아도 될것 같다.
+
+  - props로 바꿔 줍니다.
+    - this.props.store as IAgeState => 중요한 부분(타입을 지정해주는 부분)
+
+~~~javascript
+ReactDom.render(
+<Provider>
+  <App/>
+  </Provider>,
+  document.getElementById('root') as HTTLElement
+);
+
+@inject('store');
+@observer
+class App extends React.Component<{store?:IAgeState},{}>{
+  render(){
+    const store = this.props.store as IAgeState;
+    return (
+    <div>
+      <Devtools/>
+      <p className="App">
+      	{store.age}
+  			<button onClick={()=>store.addAge()}>나이가먹었다.</button>
+  			<button onClick={()=>store.addAgeSync()}>깃헙 비동기 호출</button>
+      </p>
+      </div>
+    )
+  }
+}
+~~~
+
+
+
+## autorun
+
+만약에 autorun으로 감싼 함수가 있다 처음에 무조건 한번 실행되고 , 그 다음 안에 있는 내용이 조금이라도 변경이 되면 다시 실행된다. 하지만 autorun의 사용은 그다지 권장되지 않는다.
+
+##  autorun vs computed
+
+- 둘다 리액티브
+
+  - 무언가 변경이 있을때 즉시 실행(명령형)
+- autorun
+  -  일단 한번 실행되고 , 종속된 변수들이 변경되었을때 실행
+  - 주로 로깅,UI 업데이트 같은 리액티브를 명령으로 전환할때 사용
+- computed
+  - observable 변수가 변경되었을때 실행
+- 차이점 autorun은 안의 내용이 조금이라도 변경되면 실행된다. 변경되었을 때 computed는 최적화 되어 실행된다.
+
