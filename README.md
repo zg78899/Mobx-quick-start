@@ -39,7 +39,7 @@ class AgeStore{
 const ageStore = new AgeStore();
 ~~~
 
-## Observer (by mobx-react)
+## @observer (by mobx-react)
 
 -컴포넌트에 붙여사용한다.
 
@@ -97,7 +97,7 @@ render(){
 }
 ~~~
 
-## computed 란?
+## @computed 란?
 
 - getter에만 붙일수있다. (setter 부른면 getter도 실행된다.)
 
@@ -147,7 +147,7 @@ class AgeState{
 
 
 
-## action (by mobx)
+## @action (by mobx)
 
 ### action이란?
 
@@ -229,7 +229,7 @@ class App extends React.Component<{store?:IAgeState},{}>{
 
 
 
-## autorun
+## @autorun
 
 만약에 autorun으로 감싼 함수가 있다 처음에 무조건 한번 실행되고 , 그 다음 안에 있는 내용이 조금이라도 변경이 되면 다시 실행된다. 하지만 autorun의 사용은 그다지 권장되지 않는다.
 
@@ -244,4 +244,13 @@ class App extends React.Component<{store?:IAgeState},{}>{
 - computed
   - observable 변수가 변경되었을때 실행
 - 차이점 autorun은 안의 내용이 조금이라도 변경되면 실행된다. 변경되었을 때 computed는 최적화 되어 실행된다.
+
+
+## mobx-react-devtools
+
+- 이것은 컴포넌트입니다. 단 Mobx Developer Tools는 extension이라 chrome에 설치
+- npm i mobx-react-devtools -D
+- import DevTools from 'mobx-react-devtools';
+- <DevTools/>
+- http://github.com/mobxjs/mobx-react-devtools
 
