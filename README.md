@@ -1,4 +1,4 @@
-##@observable (mobx)
+##@observable (by mobx)
 
 oberservable 사용법 - 2가지 방식
 
@@ -39,5 +39,61 @@ class AgeStore{
 const ageStore = new AgeStore();
 ~~~
 
+##Observer (by mobx-react)
 
+-컴포넌트에 붙여사용한다.
+
+oberserver 사용법 - 2가지 방식
+
+- observer(<컴포넌트>)
+
+  - 데코레이터가 없이 사용하는 방식
+
+  - SFC에 붙여 사용
+
+  - 리액트의 state을 사용하지않으면 SFC로 해도 관계없다
+
+    
+
+- <컴포넌트 클래스>에 @observer달아서 처리
+
+- 리액트의 라이프사이클이 아니라,mobx의 라이프 사이클
+
+  - componentWillReact
+  - componentWillUpdate
+  - componentDidUpdate
+
+  
+
+~~~javascript
+const StatelessApp = observer(()=>{
+  function addAge(): void{
+    ageState.addAge();
+  }
+  return (
+    <div>{ageState.getAge()}
+     <button onClick={()=>addAge()}>나이먹었다.</button>
+   </div>                         
+   );                                                  
+});
+
+@observer
+class App extends React.Component<{},{}>{
+  constructor(props:{}){
+  super(props);
+this.addAge = this.addAge.bind(this);
+}
+render(){
+  return (
+  <div>
+    {ageState.getAge()}
+<button onClcik={()=>this.addAge()}>나이 먹었다.</button>
+    </div>
+  );
+ }
+ addAge(){
+   ageState.addAge();
+ }
+}
+~~~
 
