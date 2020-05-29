@@ -145,3 +145,41 @@ class AgeState{
  }
 ~~~
 
+
+
+## action (by mobx)
+
+### action이란?
+
+- observable을 수정하는 함수
+
+  - 어디에 observable 처리된 객체를 수전하는 함수가 있는지 마킹
+  - untracked, transaction 및 allowStateChange(각 각의 요소)로 래핑 한 후 리턴
+- 평소엔 옵셔널
+  - useStrict 모드를 쓰면 필수(useStrict(true));
+  - useStrict모드에서 observable을 변경하는 함수가, action을 마킹하지 않으면 **<u>런타임 에러</u>**
+- computed의 setter는 <u>액션</u>이다.
+
+~~~ javascript
+ref.child('todos').on('value',action((snapshot:firebase.database,DataSnapshot)=>{
+  if(snapshot){
+    const list = snampshot.val();
+    const todos= [];
+    if(list !== null){
+      for(const key of Object.keys(list)){
+        todos.push({
+          id:key,
+          text:list[key]
+        });
+      }
+    }
+    this.todos = todos;
+  }
+}));
+
+@action addTodo = (text:string)=>{
+  const ref = db.ref();
+  ref.child('todos').push().set(text);
+}
+~~~
+
