@@ -1,3 +1,22 @@
+## mobx란?
+
+- 데코레이터를 적극적으로 활용한다.(코드를 읽는데 불편함이있다.)
+
+- experimentalDecorator 를  true로 설정
+  스토어 객체에 붙이는 데코레이터가 있고 =>  @observable(관찰 대상 -> 변화가 생기면 알려줌 -> 그에 따라서 렌더링 하면됨)
+
+- 컴포넌트에서 사용하는 데코레이터가 있다. =>@observer
+
+- TypeScript가 base인 라이브러리이다. 
+  당연히 @type/mobx,@types/mobx-react는 필요가 없음
+- Redux와 마찬가지로 , 스토어에 필요한 부분과 리액트에 필요한 부분이있다
+
+- npm i mobx - D
+
+- npm i mobs-react -D
+
+리덕스와 다르게 **단일** **스토어를 강제하진 않는다.**
+
 ## @observable (by mobx)
 
 oberservable 사용법 - 2가지 방식
