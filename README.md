@@ -1,8 +1,13 @@
+### 리액트에서 TypeScript로 시작
+npx create-react-app my-app --template typescript
+# or
+yarn create react-app my-app --template typescript
+
 ## mobx란?
 
 - 데코레이터를 적극적으로 활용한다.(코드를 읽는데 불편함이있다.)
 
-- experimentalDecorator 를  true로 설정
+- experimentalDecorator 를  true로 설정(tsconfig.json에서 'experimentalDecorator' :'true')
   스토어 객체에 붙이는 데코레이터가 있고 =>  @observable(관찰 대상 -> 변화가 생기면 알려줌 -> 그에 따라서 렌더링 하면됨)
 
 - 컴포넌트에서 사용하는 데코레이터가 있다. =>@observer
